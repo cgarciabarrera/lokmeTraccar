@@ -1,0 +1,68 @@
+11-11 01:55:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:55:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:55:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:55:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:56:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:56:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:56:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:56:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        SELECT id, uniqueId as imei
+        FROM devices;
+     [42102-174]
+11-11 01:56:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        INSERT INTO devices (uniqueId, name) VALUES (?, ?);
+     [42102-174]
+11-11 01:56:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        INSERT INTO devices (uniqueId, name) VALUES (?, ?);
+     [42102-174]
+11-11 01:56:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        INSERT INTO devices (uniqueId, name) VALUES (?, ?);
+     [42102-174]
+11-11 01:56:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DEVICES" not found; SQL statement:
+
+        INSERT INTO devices (uniqueId, name) VALUES (?, ?);
+     [42102-174]

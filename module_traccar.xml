@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_traccar" default="compile.module.traccar">
+  <dirname property="module.traccar.basedir" file="${ant.file.module_traccar}"/>
+  
+  <property name="module.jdk.home.traccar" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.traccar" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.traccar" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.traccar" value="${compiler.args}"/>
+  
+  <property name="traccar.output.dir" value="${module.traccar.basedir}/target/classes"/>
+  <property name="traccar.testoutput.dir" value="${module.traccar.basedir}/target/test-classes"/>
+  
+  <path id="traccar.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="traccar.module.production.classpath">
+    <path refid="${module.jdk.classpath.traccar}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.174.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.7.0.final.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.aggregate:jetty-all-server:8.1.13.v20130916.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.security.auth.message:1.0.0.v201108011116.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.mail.glassfish:1.4.1.v201005082020.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.activation:1.1.0.v201105071233.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.annotation:1.1.0.v201108011116.classpath"/>
+  </path>
+  
+  <path id="traccar.runtime.production.module.classpath">
+    <pathelement location="${traccar.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.174.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.7.0.final.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.aggregate:jetty-all-server:8.1.13.v20130916.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.security.auth.message:1.0.0.v201108011116.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.mail.glassfish:1.4.1.v201005082020.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.activation:1.1.0.v201105071233.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.annotation:1.1.0.v201108011116.classpath"/>
+  </path>
+  
+  <path id="traccar.module.classpath">
+    <path refid="${module.jdk.classpath.traccar}"/>
+    <pathelement location="${traccar.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.174.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.7.0.final.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.aggregate:jetty-all-server:8.1.13.v20130916.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.security.auth.message:1.0.0.v201108011116.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.mail.glassfish:1.4.1.v201005082020.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.activation:1.1.0.v201105071233.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.annotation:1.1.0.v201108011116.classpath"/>
+  </path>
+  
+  <path id="traccar.runtime.module.classpath">
+    <pathelement location="${traccar.testoutput.dir}"/>
+    <pathelement location="${traccar.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.174.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty:3.7.0.final.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.aggregate:jetty-all-server:8.1.13.v20130916.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.security.auth.message:1.0.0.v201108011116.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.mail.glassfish:1.4.1.v201005082020.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.activation:1.1.0.v201105071233.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty.orbit:javax.annotation:1.1.0.v201108011116.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.traccar">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.traccar">
+    <patternset refid="excluded.from.module.traccar"/>
+  </patternset>
+  
+  <path id="traccar.module.sourcepath">
+    <dirset dir="${module.traccar.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="traccar.module.test.sourcepath">
+    <dirset dir="${module.traccar.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.traccar" depends="compile.module.traccar.production,compile.module.traccar.tests" description="Compile module traccar"/>
+  
+  <target name="compile.module.traccar.production" depends="register.custom.compilers" description="Compile module traccar; production classes">
+    <mkdir dir="${traccar.output.dir}"/>
+    <javac2 destdir="${traccar.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.traccar}/javac">
+      <compilerarg line="${compiler.args.traccar}"/>
+      <bootclasspath refid="traccar.module.bootclasspath"/>
+      <classpath refid="traccar.module.production.classpath"/>
+      <src refid="traccar.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.traccar"/>
+    </javac2>
+    
+    <copy todir="${traccar.output.dir}">
+      <fileset dir="${module.traccar.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.traccar.tests" depends="register.custom.compilers,compile.module.traccar.production" description="compile module traccar; test classes" unless="skip.tests">
+    <mkdir dir="${traccar.testoutput.dir}"/>
+    <javac2 destdir="${traccar.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.traccar}/javac">
+      <compilerarg line="${compiler.args.traccar}"/>
+      <bootclasspath refid="traccar.module.bootclasspath"/>
+      <classpath refid="traccar.module.classpath"/>
+      <src refid="traccar.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.traccar"/>
+    </javac2>
+    
+    <copy todir="${traccar.testoutput.dir}">
+      <fileset dir="${module.traccar.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.traccar" description="cleanup module">
+    <delete dir="${traccar.output.dir}"/>
+    <delete dir="${traccar.testoutput.dir}"/>
+  </target>
+</project>

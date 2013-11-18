@@ -1,0 +1,20 @@
+2013-11-12 00:02:30  INFO: Starting server...
+2013-11-12 00:02:30  INFO: Operating System name: Linux version: 3.8.0-31-generic architecture: amd64
+2013-11-12 00:02:30  INFO: Java Runtime name: Java HotSpot(TM) 64-Bit Server VM vendor: Oracle Corporation version: 24.45-b08
+2013-11-12 00:02:30  INFO: Memory Limit heap: 1774mb non-heap: 130mb
+2013-11-12 00:03:27 DEBUG: [5005 <- 31.4.177.64] - HEX: 24504749442c3131323233332a33360d0a
+2013-11-12 00:03:53 DEBUG: [5005 <- 31.4.177.64] - HEX: 244750524d432c3233303334312e3735362c412c343032362e313736352c4e2c30303334312e313033372c572c302e30302c302e30302c3131313131332c2c2a31360d0a
+2013-11-12 00:03:53 DEBUG: [5005 -> 31.4.177.64] - HEX: 4f4b310d0a
+2013-11-12 00:03:53  INFO: device: 16, time: Tue Nov 12 00:03:41 CET 2013, lat: 40.436275, lon: -3.685061666666667
+2013-11-12 00:04:00  INFO: Starting server...
+2013-11-12 00:04:00  INFO: Operating System name: Linux version: 3.8.0-31-generic architecture: amd64
+2013-11-12 00:04:00  INFO: Java Runtime name: Java HotSpot(TM) 64-Bit Server VM vendor: Oracle Corporation version: 24.45-b08
+2013-11-12 00:04:00  INFO: Memory Limit heap: 1774mb non-heap: 130mb
+2013-11-12 00:04:15 DEBUG: [5005 <- 31.4.177.64] - HEX: 24504749442c3131323233332a33360d0a
+2013-11-12 00:04:19 DEBUG: [5005 <- 31.4.177.64] - HEX: 244750524d432c3233303430332e3539332c412c343032362e323434302c4e2c30303334312e313531362c572c302e30302c302e30302c3131313131332c2c2a31640d0a
+2013-11-12 00:04:19 DEBUG: [5005 -> 31.4.177.64] - HEX: 4f4b310d0a
+2013-11-12 00:04:19  INFO: device: 16, time: Tue Nov 12 00:04:03 CET 2013, lat: 40.4374, lon: -3.68586
+2013-11-12 00:04:24  WARN: Conexión reinicializada por la máquina remota - java.io.IOException (FileDispatcherImpl.java:-2)
+2013-11-12 00:04:24  INFO: Closing connection by exception
+2013-11-12 00:04:24  INFO: Closing connection by disconnect
+2013-11-12 00:32:27  INFO: Shutting down server...
