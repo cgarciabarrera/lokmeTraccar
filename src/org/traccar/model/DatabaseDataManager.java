@@ -199,7 +199,7 @@ public class DatabaseDataManager implements DataManager {
 
 
             //String urlParameters = "&latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceId() + "&accuracy=0";
-            String url = "http://lokme.lextrendlabs.com/points/manual/?latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceId() + "&accuracy=0";
+            String url = "http://lokme.lextrendlabs.com/points/manual/?latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceIMEI() + "&accuracy=0";
 
             try {
                 sendGet(url);

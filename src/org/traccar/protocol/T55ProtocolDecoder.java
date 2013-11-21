@@ -30,7 +30,8 @@ import org.traccar.model.Position;
 public class T55ProtocolDecoder extends BaseProtocolDecoder {
 
     private Long deviceId;
-
+    private String deviceIMEI="";
+    
     public T55ProtocolDecoder(ServerManager serverManager) {
         super(serverManager);
     }
@@ -80,11 +81,13 @@ public class T55ProtocolDecoder extends BaseProtocolDecoder {
             String imei = sentence.substring(6, sentence.length() - 3);
             try {
                 deviceId = getDataManager().getDeviceByImei(imei).getId();
+                deviceIMEI = imei; 
             } catch(Exception error) {
-                Log.warning("Unknown device - " + imei);
+                Log.warning("Unknown device - " + imei +" " +deviceIMEI);
                 getDataManager().addDevice(imei);
                 deviceId = getDataManager().getDeviceByImei(imei).getId();
-
+                deviceIMEI = imei;
+                
             }
         }
 
@@ -116,6 +119,7 @@ public class T55ProtocolDecoder extends BaseProtocolDecoder {
             Position position = new Position();
             ExtendedInfoFormatter extendedInfo = new ExtendedInfoFormatter("t55");
             position.setDeviceId(deviceId);
+            position.setDeviceIMEI(deviceIMEI);
 
             Integer index = 1;
 
