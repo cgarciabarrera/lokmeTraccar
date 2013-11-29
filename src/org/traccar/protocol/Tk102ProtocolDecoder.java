@@ -30,6 +30,7 @@ import org.traccar.model.Position;
 public class Tk102ProtocolDecoder extends BaseProtocolDecoder {
 
     private Long deviceId;
+    private String deviceIMEI;
 
     public Tk102ProtocolDecoder(ServerManager serverManager) {
         super(serverManager);
@@ -59,8 +60,16 @@ public class Tk102ProtocolDecoder extends BaseProtocolDecoder {
             String imei = sentence.substring(14, 14 + 15);
             try {
                 deviceId = getDataManager().getDeviceByImei(imei).getId();
+                deviceIMEI = imei;
             } catch(Exception error) {
-                Log.warning("Unknown device - " + imei);
+                Log.warning("Unknown device - " + imei + " creating new...");
+                getDataManager().addDevice(imei);
+                Log.warning("Created device - " + imei + " OK");
+                deviceId = getDataManager().getDeviceByImei(imei).getId();
+                deviceIMEI= imei;
+                //buf.skipBytes(dataLength - 8);
+                //sendResponse(channel, type, buf.readUnsignedShort());
+                
                 return null;
             }
 
@@ -114,6 +123,9 @@ public class Tk102ProtocolDecoder extends BaseProtocolDecoder {
 
             // Speed
             position.setSpeed(Double.valueOf(parser.group(index++)));
+            
+            // IMEI
+            position.setDeviceIMEI(deviceIMEI);
 
             // Course
             position.setCourse(0.0);

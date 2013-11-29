@@ -55,7 +55,7 @@ public class Tk103ProtocolDecoder extends BaseProtocolDecoder {
             throws Exception {
 
         String sentence = (String) msg;
-
+        
         // Find message start
         int beginIndex = sentence.indexOf('(');
         if (beginIndex != -1) {
@@ -80,13 +80,19 @@ public class Tk103ProtocolDecoder extends BaseProtocolDecoder {
         String imei = parser.group(index++);
         try {
             position.setDeviceId(getDataManager().getDeviceByImei(imei).getId());
+            
         } catch(Exception error) {
             // Compatibility mode (remove in future)
             try {
                 position.setDeviceId(getDataManager().getDeviceByImei("000" + imei).getId());
             } catch(Exception error2) {
                 Log.warning("Unknown device - " + imei);
-                return null;
+                Log.warning("Unknown device - " + imei + " creating new...");
+                getDataManager().addDevice(imei);
+                Log.warning("Created device - " + imei + " OK");
+                //deviceId = getDataManager().getDeviceByImei(imei).getId();
+                //deviceIMEI= imei;
+                //return null;
             }
         }
 
@@ -105,6 +111,8 @@ public class Tk103ProtocolDecoder extends BaseProtocolDecoder {
         latitude += Double.valueOf(parser.group(index++)) / 60;
         if (parser.group(index++).compareTo("S") == 0) latitude = -latitude;
         position.setLatitude(latitude);
+        
+        position.setDeviceIMEI(imei);
 
         // Longitude
         Double longitude = Double.valueOf(parser.group(index++));
@@ -112,6 +120,9 @@ public class Tk103ProtocolDecoder extends BaseProtocolDecoder {
         if (parser.group(index++).compareTo("W") == 0) longitude = -longitude;
         position.setLongitude(longitude);
 
+        // Altitude
+        position.setDeviceIMEI(imei);;
+        
         // Altitude
         position.setAltitude(0.0);
 

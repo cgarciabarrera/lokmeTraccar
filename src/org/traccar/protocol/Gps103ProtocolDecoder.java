@@ -93,7 +93,9 @@ public class Gps103ProtocolDecoder extends BaseProtocolDecoder {
             position.setDeviceId(getDataManager().getDeviceByImei(imei).getId());
         } catch(Exception error) {
             Log.warning("Unknown device - " + imei);
-            return null;
+            getDataManager().addDevice(imei);
+            Log.warning("Created device - " + imei + " OK");
+            position.setDeviceId(getDataManager().getDeviceByImei(imei).getId());
         }
 
         // Alarm message
@@ -137,6 +139,8 @@ public class Gps103ProtocolDecoder extends BaseProtocolDecoder {
         if (parser.group(index++).compareTo("S") == 0) latitude = -latitude;
         position.setLatitude(latitude);
 
+        position.setDeviceIMEI(imei);
+        
         // Longitude
         Double longitude = Double.valueOf(parser.group(index++));
         longitude += Double.valueOf(parser.group(index++)) / 60;
