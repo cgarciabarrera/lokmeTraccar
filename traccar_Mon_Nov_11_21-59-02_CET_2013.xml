@@ -166,42 +166,24 @@
   
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.traccar:jar" value="${basedir}/out/artifacts/traccar_jar"/>
+    <property name="artifact.output.unnamed" value="${basedir}/out/artifacts/unnamed"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.traccar_jar.jar" value="${artifacts.temp.dir}/traccar_jar.jar"/>
-    <property name="temp.jar.path.traccar.jar" value="${artifacts.temp.dir}/traccar.jar"/>
+    <property name="temp.jar.path.unnamed.jar" value="${artifacts.temp.dir}/unnamed.jar"/>
   </target>
   
-  <target name="artifact.traccar:jar" depends="init.artifacts, compile.module.traccar" description="Build &#39;traccar:jar&#39; artifact">
-    <property name="artifact.temp.output.traccar:jar" value="${artifacts.temp.dir}/traccar_jar"/>
-    <mkdir dir="${artifact.temp.output.traccar:jar}"/>
-    <jar destfile="${temp.jar.path.traccar.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
-      <zipfileset dir="${traccar.output.dir}"/>
+  <target name="artifact.unnamed" depends="init.artifacts" description="Build &#39;unnamed&#39; artifact">
+    <property name="artifact.temp.output.unnamed" value="${artifacts.temp.dir}/unnamed"/>
+    <mkdir dir="${artifact.temp.output.unnamed}"/>
+    <jar destfile="${temp.jar.path.unnamed.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset file="${basedir}/META-INF/MANIFEST.MF" prefix="META-INF"/>
     </jar>
-    <jar destfile="${temp.jar.path.traccar_jar.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
-      <zipfileset file="${temp.jar.path.traccar.jar}"/>
-      <zipfileset file="${path.variable.maven_repository}/org/eclipse/jetty/orbit/javax.mail.glassfish/1.4.1.v201005082020/javax.mail.glassfish-1.4.1.v201005082020.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.26/mysql-connector-java-5.1.26.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/org/eclipse/jetty/aggregate/jetty-all-server/8.1.13.v20130916/jetty-all-server-8.1.13.v20130916.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/junit/junit/4.11/junit-4.11.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/org/eclipse/jetty/orbit/javax.security.auth.message/1.0.0.v201108011116/javax.security.auth.message-1.0.0.v201108011116.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/io/netty/netty/3.7.0.Final/netty-3.7.0.Final.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/org/eclipse/jetty/orbit/javax.activation/1.1.0.v201105071233/javax.activation-1.1.0.v201105071233.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/org/eclipse/jetty/orbit/javax.annotation/1.1.0.v201108011116/javax.annotation-1.1.0.v201108011116.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
-      <zipfileset file="${path.variable.maven_repository}/com/h2database/h2/1.3.174/h2-1.3.174.jar"/>
-      <zipfileset file="${basedir}/zMETA-INF/MANIFEST.MF" prefix="META-INF"/>
-    </jar>
-    <copy file="${temp.jar.path.traccar_jar.jar}" tofile="${artifact.temp.output.traccar:jar}/traccar_jar.jar"/>
+    <copy file="${temp.jar.path.unnamed.jar}" tofile="${artifact.temp.output.unnamed}/unnamed.jar"/>
   </target>
   
-  <target name="build.all.artifacts" depends="artifact.traccar:jar" description="Build all artifacts">
-    <mkdir dir="${artifact.output.traccar:jar}"/>
-    <copy todir="${artifact.output.traccar:jar}">
-      <fileset dir="${artifact.temp.output.traccar:jar}"/>
+  <target name="build.all.artifacts" depends="artifact.unnamed" description="Build all artifacts">
+    <mkdir dir="${artifact.output.unnamed}"/>
+    <copy todir="${artifact.output.unnamed}">
+      <fileset dir="${artifact.temp.output.unnamed}"/>
     </copy>
     
     <!-- Delete temporary files -->
