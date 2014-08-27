@@ -19,6 +19,7 @@ import java.io.*;
 import java.net.*;
 import java.sql.*;
 import java.util.*;
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpressionException;
@@ -29,6 +30,14 @@ import org.traccar.helper.DriverDelegate;
 import org.traccar.helper.Log;
 import org.traccar.helper.NamedParameterStatement;
 import org.xml.sax.InputSource;
+
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.MalformedURLException; 
+import java.io.UnsupportedEncodingException;
+
 
 
 /**
@@ -199,11 +208,45 @@ public class DatabaseDataManager implements DataManager {
 
 
             //String urlParameters = "&latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceId() + "&accuracy=0";
-            String url = "http://www.lokusapp.com/points/manual/?latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceIMEI() + "&accuracy=0";
-
+            //String url = "http://www.lokusapp.com/points/manual/?speed=" + position.getSpeed() + "&altitude=" + position.getAltitude() +  "&course=" + position.getCourse() +  "&latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceIMEI()  + "&accuracy=0";
+            String htt = "http";
+            String dom = "www.lokusapp.com";
+            String dire = "/points/manual";
+            String params_send = "latitude=" + position.getLatitude() ;
+            params_send = params_send + "&longitude=" + position.getLongitude(); 
+            params_send = params_send + "&imei=" + position.getDeviceIMEI()  ;
+            params_send = params_send + "&altitude=" + position.getAltitude() ;
+            params_send = params_send + "&course=" + position.getCourse() ;
+            params_send = params_send + "&extended=" + position.getExtendedInfo();  
+            params_send = params_send + "&speed=" + position.getSpeed()   ;
+            params_send = params_send + "&datetime=" + position.getTime() ;  
+            params_send = params_send + "&accuracy=0";
+            
+            Log.info("POSITION alt: " + position.getAltitude().toString());
+            Log.info("POSITION ext: " + position.getExtendedInfo().toString());
+            Log.info("POSITION course: " + position.getCourse().toString());
+            Log.info("POSITION speed: " + position.getSpeed().toString());
+            
+            URI uri =null;
+			try {
+				uri = new URI(
+				        htt, 
+				        dom, 
+				        dire,
+				        params_send,
+				        null);
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+            String request = uri.toASCIIString();
+            
             try {
-                sendGet(url);
+            	Log.info("YO mando :  " + request);
+                sendGet(request);
+                Log.info("OK al envio de url:  "+ request);
             } catch (Exception e) {
+            	Log.error("ha dado error al mandar la URL: " + request);
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
 

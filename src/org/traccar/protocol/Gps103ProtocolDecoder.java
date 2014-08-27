@@ -58,7 +58,8 @@ public class Gps103ProtocolDecoder extends BaseProtocolDecoder {
             throws Exception {
 
         String sentence = (String) msg;
-
+        Log.info("gps103 msg=: " + sentence);
+        
         // Send response #1
         if (sentence.contains("##")) {
             if (channel != null) {

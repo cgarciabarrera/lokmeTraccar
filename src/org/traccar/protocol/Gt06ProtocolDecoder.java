@@ -92,6 +92,8 @@ public class Gt06ProtocolDecoder extends BaseProtocolDecoder {
         int type = buf.readUnsignedByte();
         
         if (type == MSG_LOGIN) {
+        	 Log.info("gp06 msglogin=: " );
+             
             String imei = readImei(buf);
             try {
                 deviceId = getDataManager().getDeviceByImei(imei).getId();
@@ -115,7 +117,8 @@ public class Gt06ProtocolDecoder extends BaseProtocolDecoder {
                  type == MSG_GPS_LBS ||
                  type == MSG_GPS_LBS_STATUS ||
                  type == MSG_GPS_PHONE) {
-
+        	 Log.info("gp06 msg other=: " );
+             
             // Create new position
             Position position = new Position();
             position.setDeviceId(deviceId);
