@@ -219,8 +219,23 @@ public class DatabaseDataManager implements DataManager {
             params_send = params_send + "&course=" + position.getCourse() ;
             params_send = params_send + "&extended=" + position.getExtendedInfo();  
             params_send = params_send + "&speed=" + position.getSpeed()   ;
-            params_send = params_send + "&datetime=" + position.getTime() ;  
+            params_send = params_send + "&datetime=" + String.valueOf(position.getTime().getTime() / 1000);  
             params_send = params_send + "&accuracy=0";
+            
+            
+            String htt2 = "http";
+            String dom2 = "new.lokusapp.com";
+            String dire2 = "/devices/new_point";
+            String params_send2 = "latitude=" + position.getLatitude() ;
+            params_send2 = params_send2 + "&longitude=" + position.getLongitude(); 
+            params_send2 = params_send2 + "&imei=" + position.getDeviceIMEI()  ;
+            params_send2 = params_send2 + "&altitude=" + position.getAltitude() ;
+            params_send2 = params_send2 + "&course=" + position.getCourse() ;
+            params_send2 = params_send2 + "&extended=" + position.getExtendedInfo();  
+            params_send2 = params_send2 + "&speed=" + position.getSpeed()   ;
+            params_send2 = params_send2 + "&datetime=" + String.valueOf(position.getTime().getTime() / 1000);  
+            params_send2 = params_send2 + "&accuracy=0"; 
+            
             
             Log.info("POSITION alt: " + position.getAltitude().toString());
             Log.info("POSITION ext: " + position.getExtendedInfo().toString());
@@ -228,6 +243,9 @@ public class DatabaseDataManager implements DataManager {
             Log.info("POSITION speed: " + position.getSpeed().toString());
             
             URI uri =null;
+            String request =null;
+            
+            
 			try {
 				uri = new URI(
 				        htt, 
@@ -239,7 +257,7 @@ public class DatabaseDataManager implements DataManager {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-            String request = uri.toASCIIString();
+            request = uri.toASCIIString();
             
             try {
             	Log.info("YO mando :  " + request);
@@ -250,6 +268,30 @@ public class DatabaseDataManager implements DataManager {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
 
+            // al nuevo 
+            uri =null;
+            request =null;
+			try {
+				uri = new URI(
+				        htt2, 
+				        dom2, 
+				        dire2,
+				        params_send2,
+				        null);
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+            request = uri.toASCIIString();
+            
+            try {
+            	Log.info("YO mando :  " + request);
+                sendGet(request);
+                Log.info("OK al envio de url:  "+ request);
+            } catch (Exception e) {
+            	Log.error("ha dado error al mandar la URL: " + request);
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
 
             ResultSet result = queryAddPosition.getGeneratedKeys();
             if (result != null && result.next()) {
