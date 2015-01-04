@@ -64,9 +64,6 @@ public class DriverDelegate implements Driver {
         return driver.jdbcCompliant();
     }
 
-    @Override
-    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return driver.getParentLogger();
-    }
+
     
 }

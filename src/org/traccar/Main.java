@@ -26,6 +26,7 @@ public class Main {
         final ServerManager service = new ServerManager();
         service.init(args);
 
+        System.out.print("Arrancamos....");
         Log.info("Starting server...");
         Log.logSystemInfo();
 

@@ -133,9 +133,6 @@ public class DatabaseDataManager implements DataManager {
             }
         }
 
-
-
-
         return deviceList;
     }
 
@@ -206,22 +203,6 @@ public class DatabaseDataManager implements DataManager {
             //aqui mandar al webservice.
 
 
-
-            //String urlParameters = "&latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceId() + "&accuracy=0";
-            //String url = "http://www.lokusapp.com/points/manual/?speed=" + position.getSpeed() + "&altitude=" + position.getAltitude() +  "&course=" + position.getCourse() +  "&latitude=" + position.getLatitude() + "&longitude=" + position.getLongitude() + "&imei=" + position.getDeviceIMEI()  + "&accuracy=0";
-            String htt = "http";
-            String dom = "www.lokusapp.com";
-            String dire = "/points/manual";
-            String params_send = "latitude=" + position.getLatitude() ;
-            params_send = params_send + "&longitude=" + position.getLongitude(); 
-            params_send = params_send + "&imei=" + position.getDeviceIMEI()  ;
-            params_send = params_send + "&altitude=" + position.getAltitude() ;
-            params_send = params_send + "&course=" + position.getCourse() ;
-            params_send = params_send + "&extended=" + position.getExtendedInfo();  
-            params_send = params_send + "&speed=" + position.getSpeed()   ;
-            params_send = params_send + "&datetime=" + String.valueOf(position.getTime().getTime() / 1000);  
-            params_send = params_send + "&accuracy=0";
-            
             
             String htt2 = "http";
             String dom2 = "new.lokusapp.com";
@@ -246,27 +227,7 @@ public class DatabaseDataManager implements DataManager {
             String request =null;
             
             
-			try {
-				uri = new URI(
-				        htt, 
-				        dom, 
-				        dire,
-				        params_send,
-				        null);
-			} catch (URISyntaxException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-            request = uri.toASCIIString();
-            
-            try {
-            	Log.info("YO mando :  " + request);
-                sendGet(request);
-                Log.info("OK al envio de url:  "+ request);
-            } catch (Exception e) {
-            	Log.error("ha dado error al mandar la URL: " + request);
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
+
 
             // al nuevo 
             uri =null;
